@@ -16,7 +16,7 @@
 #define T_C 5
 #define T_S 4
 #define T_M 6
-#define T_TR 6
+#define T_TR 100
 #define T_CL 100
 
 int main(void) {
@@ -24,8 +24,8 @@ int main(void) {
 
 	int opcion;
 	int retorno;
-	int flagAlta = 1;
-	int flagTrabajos = 1;
+	int flagAlta = 0;
+	int flagTrabajos = 0;
 	int opcionInformes;
 
 	eTipo listaTipos[T_T] = {{1000, "Enduro"}, {1001, "Chopera"}, {1002, "Scooter"}, {1003, "Vintage"}};
@@ -36,17 +36,17 @@ int main(void) {
 
 	eMoto listaMotos[T_M] = {{33, "Yamaha", 1000, 10000, 1, 750, 9, OCUPADO},
 							{11, "Honda", 1001, 10001, 2, 125, 8, OCUPADO},
-							{44, "Lolaso", 1002, 10002, 3, 600, 10, OCUPADO},
-							{66, "Tornado", 1003, 10003, 4, 125, 5, OCUPADO},
-							{55, "Wololo", 1000, 10004, 5, 600, 7, OCUPADO},
-							{22, "Trolaso", 1003, 10001, 1, 750, 9, OCUPADO}};
+							{44, "Motomel", 1002, 10002, 3, 600, 10, OCUPADO},
+							{66, "Yamaha", 1003, 10003, 4, 125, 5, OCUPADO},
+							{55, "BMW", 1000, 10004, 5, 600, 7, OCUPADO},
+							{22, "Honda", 1003, 10001, 1, 750, 9, OCUPADO}};
 
 	eTrabajo listaTrabajos[T_TR] = {{1, 33, 20000, {12,10,2020}, OCUPADO},
 									{2, 11, 20001, {11,10,2020}, OCUPADO},
 									{3, 55, 20000, {10,10,2020}, OCUPADO},
 									{4, 55, 20003, {13,10,2020}, OCUPADO},
 									{5, 44, 20001, {14,10,2020}, OCUPADO},
-									{6, 33, 20002, {15,10,2020}, OCUPADO},};
+									{6, 33, 20002, {15,10,2020}, OCUPADO}};
 
 	eCliente listaClientes[T_CL] = {{1, "Pablo", "Masculino", OCUPADO},{2, "Esteban", "Masculino", OCUPADO},{3, "German", "Masculino", OCUPADO},{4, "Laura", "Femenino", OCUPADO},{5, "Monica", "Femenino", OCUPADO}};
 
@@ -221,41 +221,56 @@ int main(void) {
 				}
 			break;
 			case 10:
-				opcionInformes = MostrarMenuInformes();
-
-				switch(opcionInformes)
+				if(flagAlta == 1)
 				{
-					case 1:
-						MostrarMotosDeUnColor(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
-					break;
-					case 2:
-						InformarPromedioPuntajeDeUnTipo(listaMotos, T_M, listaTipos, T_T);
-					break;
-					case 3:
-						InformarMayorCilindrada(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
-					break;
-					case 4:
-						MostrarMotosPorTipo(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
-					break;
-					case 5:
-						MostrarMotosDeUnColorYUnTipo(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
-					break;
-					case 6:
-						MostrarColorMasElegido(listaMotos, T_M, listaColores, T_C);
-					break;
-					case 7:
-						MostrarTrabajosDeUnaMoto(listaTrabajos, T_TR, listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL, listaServicios, T_S);
-					break;
-					case 8:
-						InformarSumaImportesServiciosDeUnaMoto(listaTrabajos, T_TR, listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL, listaServicios, T_S);
-					break;
-					case 9:
-						MostrarMotosDeUnServicio(listaTrabajos, T_TR, listaMotos, T_M, listaServicios, T_S);
-					break;
-					case 10:
-						MostrarServiciosDeUnaFecha(listaTrabajos, T_TR, listaServicios, T_S);
-					break;
+					if(flagTrabajos == 1)
+					{
+						opcionInformes = MostrarMenuInformes();
+
+						switch(opcionInformes)
+						{
+							case 1:
+								MostrarMotosDeUnColor(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
+							break;
+							case 2:
+								InformarPromedioPuntajeDeUnTipo(listaMotos, T_M, listaTipos, T_T);
+							break;
+							case 3:
+								InformarMayorCilindrada(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
+							break;
+							case 4:
+								MostrarMotosPorTipo(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
+							break;
+							case 5:
+								MostrarMotosDeUnColorYUnTipo(listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL);
+							break;
+							case 6:
+								MostrarColorMasElegido(listaMotos, T_M, listaColores, T_C);
+							break;
+							case 7:
+								MostrarTrabajosDeUnaMoto(listaTrabajos, T_TR, listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL, listaServicios, T_S);
+							break;
+							case 8:
+								InformarSumaImportesServiciosDeUnaMoto(listaTrabajos, T_TR, listaMotos, T_M, listaTipos, T_T, listaColores, T_C, listaClientes, T_CL, listaServicios, T_S);
+							break;
+							case 9:
+								MostrarMotosDeUnServicio(listaTrabajos, T_TR, listaMotos, T_M, listaServicios, T_S);
+							break;
+							case 10:
+								MostrarServiciosDeUnaFecha(listaTrabajos, T_TR, listaServicios, T_S);
+							break;
+						}
+					}
+					else
+					{
+						printf("Se debera cargar al menos un trabajo antes de ingresar a esta opcion...\n");
+					}
 				}
+				else
+				{
+					printf("Se debera cargar al menos una moto antes de ingresar a esta opcion...\n");
+				}
+
 			break;
 		}
 
