@@ -50,16 +50,20 @@ int MostrarMenuInformes()
 {
 	int opcion;
 
-	printf("\n----------------------------------------\n"
-			"             Informes\n"
+	printf("\n-----------------------------------------------------------------------\n"
+			"                              Informes\n"
 			"1. Mostrar motos de un color\n"
 			"2. Promedio puntaje de un tipo\n"
 			"3. Motos de mayor cilindrada\n"
 			"4. Mostrar motos separadas por tipo\n"
 			"5. Mostrar cantidad motos de un color y tipo\n"
 			"6. Mostrar el color mas elegido\n"
-			"----------------------------------------\n");
-	opcion = ElegirOpcion(6, 1);
+			"7. Mostrar trabajos de una moto\n"
+			"8. Suma de importes de servicios de una moto\n"
+			"9. Mostrar las motos a las que se le realizó un servicio determinado\n"
+			"10. Mostrar servicios de una fecha\n"
+			"-----------------------------------------------------------------------\n");
+	opcion = ElegirOpcion(10, 1);
 
 	return opcion;
 }

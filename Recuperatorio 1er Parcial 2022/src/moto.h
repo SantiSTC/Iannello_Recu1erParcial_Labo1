@@ -16,6 +16,7 @@ typedef struct
 	char marca[21];
 	int idTipo;
 	int idColor;
+	int idCliente;
 	int cilindrada;
 	int puntaje;
 	int estado;
